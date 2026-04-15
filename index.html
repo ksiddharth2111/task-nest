@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task Nest</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header>
+      <div>
+        <h1>Task Nest</h1>
+        <p>Drag tasks between columns, add/edit/delete, and save progress locally.</p>
+      </div>
+      <div class="toolbar">
+        <button id="addTaskButton">Add Task</button>
+        <div class="filters">
+          <select id="statusFilter">
+            <option value="all">All Statuses</option>
+            <option value="todo">To Do</option>
+            <option value="in-progress">In Progress</option>
+            <option value="done">Done</option>
+          </select>
+          <select id="priorityFilter">
+            <option value="all">All Priorities</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="board" id="board">
+        <section class="column" data-status="todo">
+          <h2>To Do</h2>
+          <div class="task-list" id="todoList"></div>
+        </section>
+        <section class="column" data-status="in-progress">
+          <h2>In Progress</h2>
+          <div class="task-list" id="inProgressList"></div>
+        </section>
+        <section class="column" data-status="done">
+          <h2>Done</h2>
+          <div class="task-list" id="doneList"></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <button class="add-task-float" id="addTaskButtonFloat" type="button">Add Task</button>
+
+  <div class="modal hidden" id="taskModal">
+    <div class="modal-dialog">
+      <header>
+        <h2 id="modalTitle">New Task</h2>
+        <button class="close-button" id="closeModal">×</button>
+      </header>
+      <form id="taskForm">
+        <label>
+          Title
+          <input type="text" id="taskTitle" required maxlength="80" />
+        </label>
+        <label>
+          Description
+          <textarea id="taskDescription" rows="4" maxlength="240"></textarea>
+        </label>
+        <label>
+          Status
+          <select id="taskStatus">
+            <option value="todo">To Do</option>
+            <option value="in-progress">In Progress</option>
+            <option value="done">Done</option>
+          </select>
+        </label>
+        <label>
+          Priority
+          <select id="taskPriority">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+        </label>
+        <label>
+          Due Date
+          <input type="date" id="taskDueDate" />
+        </label>
+        <label>
+          Labels (comma separated)
+          <input type="text" id="taskLabels" placeholder="Design, Client, Bug" />
+        </label>
+        <div class="modal-actions">
+          <button type="button" id="cancelButton">Cancel</button>
+          <button type="submit" id="saveButton">Save Task</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
